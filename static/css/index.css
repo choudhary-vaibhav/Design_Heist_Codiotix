@@ -1,0 +1,130 @@
+.adv{
+    height:500px !important;
+    position: relative;
+    text-align: center;
+  }
+  @keyframes move {
+    from {margin-top:0;}
+    to {margin-top:16px;}
+  }
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family:'Monoton' , cursive;
+    color:white;
+    animation: move 1.7s ease-out  infinite alternate;
+  }
+  .interval{
+    height:100% !important;
+    width:100% !important; 
+    opacity:0.2 !important;
+  }
+  @media only screen and (max-width: 549px){
+   .adv{
+     height:300px !important;
+   }
+  }
+
+  .my-form{
+      display:flex;
+      width:60%;
+      margin-left:auto;
+      margin-right:auto;
+  }
+  .my-btn{
+      margin-left:16px;
+  }
+
+  @media only screen and (max-width: 991.5px){
+      .my-form{
+          width:80%;
+      }
+
+  }
+  @media only screen and (max-width: 300px){
+    .my-form{
+        width:85%;
+    }
+    .my-btn{
+        margin-left:8px;
+    }
+
+}
+
+.lang-sec{
+  width:100%;
+}
+.text-btn{
+  width:100% !important;
+  font-size:1rem !important;
+}
+.show-sec{
+  display:flex;
+  width:100% !important;
+  justify-content:center;
+}
+.show-left , .show-mid , .show-right{
+  width:25%;
+  height:150px;
+  position: relative;
+  text-align: center;
+  color: white;
+  margin:20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.movie-img{
+  width:65%;
+  height:100%;
+}
+
+@media only screen and (max-width: 500px){
+  .show-left , .show-mid , .show-right{
+     width:30%;
+     height:100px;
+     margin:5px;
+  }
+  .text-btn{
+    font-size:0.5rem !important;
+    width:60%;
+  }
+  .movie-img{
+    width:60%;
+  }
+  .tt{
+    font-size:0.8rem;
+  }
+}
+
+
+@media only screen and (max-width: 290px){
+  .show-left , .show-mid , .show-right{
+     height:80px;
+  }
+  .centered{
+    font-size:1.5rem;
+  }
+  .tt{
+    font-size:0.6rem;
+  }
+}
+
+.lan{
+  display:flex;
+  width:90%;
+  margin-left:auto;
+  margin-right:auto;
+  justify-content:flex-end;
+  text-align:center;
+}
+hr.new2 {
+  width:90%;
+  margin-left:auto;
+  margin-right:auto;
+  border-top: 2px solid white;
+}

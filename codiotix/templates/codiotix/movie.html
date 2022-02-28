@@ -1,0 +1,134 @@
+{% extends 'codiotix/moviebase.html'%}
+{%block content%}
+
+
+<!--for movie-->
+{%if movie%}
+    <img src="{{movie.image.url}}" class="img-fluid res" alt="{{movie.name}} image">
+<div class="col-10 mx-auto my-5">
+    <h1 class="h1 my-3 text-white">{{movie.name}}</h1>
+    <h3 class="h5" style="color:red;">Codiotix</h3>
+    <p class="mt-2 text-white">Included with Codiotix</p>
+{%if user.is_authenticated%}
+<a class="btn btn-primary" type="button" href="{{movie.video.url}}">
+    Watch Movie
+</a>
+{%else%}
+<a class="btn btn-primary" type="button" href="{%url 'Login'%}">Login to Watch</a>
+{%endif%}
+</div>
+<h2 class="display-4 text-center text-white">Cast</h2>
+  <section class="cast">
+    {%for cast in casts%}
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="{{cast.actorImage.url}}" alt="Avatar"  class="actor">
+        </div>
+        <div class="flip-card-back">
+          <h3 class="head mt-2">{{cast.name}}</h3> 
+          <p class="para">{{cast.about|truncatechars:120}}</p> 
+          <a type="button" class="btn btn-outline-light btn-sm castbtn" href="{%url 'ShowActor' cast.id%}">View more</a>
+        </div>
+      </div>
+    </div>
+  {%endfor%}  
+</section>
+</div>
+{%endif%}
+
+
+<!--for webserie-->
+{%if webserie%}
+<img src="{{webserie.image.url}}" class="img-fluid res" alt="{{webserie.name}} image" class="actor">
+<div class="col-10 mx-auto my-5">
+    <h1 class="h1 my-3 text-white">{{webserie.name}}</h1>
+    <h3 class="h5" style="color:red;">Codiotix</h3>
+    <p class="mt-2 text-white">Included with Codiotix</p>
+    {%if user.is_authenticated%}
+{%for episode in episodes%}
+<p>
+<a class="btn btn-primary" type="button" href="{{episode.video.url}}">
+    Episode-{{episode.episode_number}}: {{episode.name}}
+</a>
+</p>
+{%endfor%}
+{%else%}
+<a class="btn btn-primary" type="button" href="{%url 'Login'%}">Login to Watch</a>
+{%endif%}
+</div>
+<h2 class="display-4 text-center text-white">Cast</h2>
+<section class="cast">
+  {%for webcast in webcasts%}
+  <div class="flip-card" data-aos="fade-right">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="{{webcast.actorImage.url}}" alt="Avatar"  class="actor">
+    </div>
+    <div class="flip-card-back">
+      <h3 class="head mt-2">{{webcast.name}}</h3> 
+      <p class="para">{{webcast.about|truncatechars:120}}</p> 
+      <a type="button" class="btn btn-outline-light btn-sm castbtn" href="{%url 'ShowActor' webcast.id%}">View more</a>
+    </div>
+  </div>
+</div>
+{%endfor%}  
+</section>
+{%endif%}
+
+<!--for documentary-->
+{%if documentary%}
+    <img src="{{documentary.image.url}}" class="img-fluid res" alt="{{documentary.name}} image">
+<div class="col-10 mx-auto my-5">
+    <h1 class="h1 my-3 text-white">{{documentary.name}}</h1>
+    <h3 class="h5" style="color:red;">Codiotix</h3>
+    <p class="mt-2 text-white">Included with Codiotix</p>
+
+    {%if user.is_authenticated%}
+    <a class="btn btn-primary" type="button" href="{{documentary.video.url}}">
+        Watch Movie
+    </a>
+    {%else%}
+    <a class="btn btn-primary" type="button" href="{%url 'Login'%}">Login to Watch</a>
+    {%endif%}
+</div>
+<h2 class="display-4 text-center text-white">Cast</h2>
+  <section class="cast">
+    {%for cast in casts%}
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="{{cast.actorImage.url}}" alt="Avatar"  class="actor">
+        </div>
+        <div class="flip-card-back">
+          <h3 class="head mt-2">{{cast.name}}</h3> 
+          <p class="para">{{cast.about|truncatechars:120}}</p> 
+          <a type="button" class="btn btn-outline-light btn-sm castbtn" href="{%url 'ShowActor' cast.id%}">View more</a>
+        </div>
+      </div>
+    </div>
+  {%endfor%}  
+</section>
+</div>
+{%endif%}
+
+
+<!--for actor-->
+{%if actor%}
+<div class="col-10 mx-auto d-flex justify-content-center flex-column">
+  <div class="image-section">
+  <img src="{{actor.actorImage.url}}" alt="{{actor.name}}" class="ap mt-2">
+  </div>
+  <div class="text-section">
+    <h1 class="display-4 text-white text-center mt-3">{{actor.name}}</h1>
+    <p class="text-white mt-3 abhi">{{actor.about}}</p>
+  </div>
+</div>
+{%endif%}
+{%endblock content%}
+
+
+
+
+
+

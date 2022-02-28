@@ -1,0 +1,48 @@
+{%extends 'codiotix/base.html'%}
+{%block content%}
+{%load static%}
+<div class="adv" style="height:500px;">
+    <img src="{%static 'img/McDonalds-food-poster-design.jpg'%}" class="interval" >
+    <div class="centered display-5">ADVERTISEMENT</div>
+</div>
+
+<div class="container mt-5">
+    <form method="GET" action="{%url 'SearchResult'%}?{{request.GET.query}}" class="my-form">
+        <input type="text" class="form-control" id="searching" name="query" placeholder="Search here!" required>
+        <button type="submit" class="btn btn-primary my-btn">Search</button>
+    </form>
+</div>
+<hr class="new2 my-5">
+    <div class="show-sec my-5">
+        <a href="{%url 'ShowIt' movie%}"style="text-decoration:none;" value="movie" class="show-left">
+        
+          <img src="{%static 'img/popcorn.png'%}" alt="movies" class="movie-img">
+            <p class="text-btn">MOVIES</p>
+        </a>
+
+        <a href="{%url 'ShowIt' webserie%}"style="text-decoration:none;" value="webserie" class="show-mid">
+            <img src="{%static 'img/tv-show.png'%}" alt="movies" class="movie-img">
+            <p class="text-btn">WEBSERIES</p>
+        </a>
+
+        <a href="{%url 'ShowIt' documentary%}"style="text-decoration:none;" value="documentary" class="show-right">
+            <img src="{%static 'img/documentary.png'%}" alt="movies" class="movie-img">
+            <p class="text-btn">DOCUMENTARY</p>
+        </a>
+    </div>
+<hr class="new2">
+<div class="lan">
+<a href="{%url 'ShowIt' view%}" style="text-decoration:none; color:white;"><p class="text-white text-right tt">{{view}}</p></a>
+</div>
+
+<div class="show-sec">
+
+    {%for language in languages|slice:':3'%}
+    <a href="{%url 'SearchLanguage' language.id%}" style="text-decoration:none !important;" class="show-left">
+        <img src="{{language.image.url}}" alt="movies" class="movie-img">
+        <p class="text-btn" style=" text-transform:uppercase;">{{language.language_type}}</p>
+</a>
+    {%endfor%}
+</div>
+</div>
+{%endblock content%}

@@ -1,0 +1,29 @@
+
+{% include 'codiotix/base.html'%}
+
+{%block content%}
+<div class="col-10 mx-auto my-5 text-white">
+    <form method="GET" action="{%url 'SearchResult'%}?{{request.GET.query}}" class="mx-auto">
+        <div class="row g-3">
+    <div class="col-8">
+        <input type="text" class="form-control" id="searching" name="query" placeholder="Search using movie name , category , cast...." required>
+      </div>
+      <div class="col-2">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+    </form>
+
+
+<div class="col-6 my-5">
+  <h5 class="h5 text-muted text-center">Genre</h5>
+  <hr>
+  {%for genre in genres%}
+  <a href="{%url 'SearchGenre' genre.id%}" style="text-decoration:none;"><p class="text-white">{{genre.type}}</p></a>
+  <hr>
+  {%endfor%}
+</div>
+
+       
+</div>
+{%endblock content%}

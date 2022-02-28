@@ -1,0 +1,62 @@
+{%extends 'codiotix/base.html'%}
+{%block content%}
+<div class="container">
+    {%if lname%}
+    <h3 class="text-white text-center h3 my-4" style="text-transform:capitalize;">{{lname}}</h3>
+    {%else%}
+    <h3 class="text-white text-center h3 my-4" style="text-transform:capitalize;">{{data}}</h3>
+    {%endif%}
+    {%if error%}
+    <p style="color:red;" class="text-center my-4">{{error}}</p>
+    {%endif%}
+    <div class="row g-3 my-4">
+        {%for movie in movies%}
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+          <div class="card text-muted">
+              <img class="card-img-top" src="{{movie.image.url}}" alt="{{movie.name}}" style="height:200px !important;">
+              <div class="card-body">
+                <h5 class="card-title">{{movie.name}}</h5>
+                <p class="card-text">{{movie.desc|truncatechars:40}}</p>
+                <a href="{%url 'ShowMovie' movie.id%}" class="btn btn-primary">View</a>
+              </div>
+            </div>
+        </div>
+        {%endfor%}
+        {%for webserie in webseries%}
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+          <div class="card text-muted">
+              <img class="card-img-top" src="{{webserie.image.url}}" alt="{{webserie.name}}" style="height:200px !important;">
+              <div class="card-body">
+                <h5 class="card-title">{{webserie.name}}</h5>
+                <p class="card-text">{{webserie.desc|truncatechars:40}}</p>
+                <a href="{%url 'ShowWebserie' webserie.id%}" class="btn btn-primary">View</a>
+              </div>
+            </div>
+        </div>
+        {%endfor%}
+        {%for documentary in documentaries%}
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+          <div class="card text-muted">
+              <img class="card-img-top" src="{{docummentary.image.url}}" alt="{{documentary.name}}" style="height:200px !important;">
+              <div class="card-body">
+                <h5 class="card-title">{{documentary.name}}</h5>
+                <p class="card-text">{{documentary.desc|truncatechars:40}}</p>
+                <a href="{%url 'ShowDocumentary' documentary.id%}" class="btn btn-primary">View</a>
+              </div>
+            </div>
+        </div>
+        {%endfor%}
+        {%for language in languages%}
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+          <div class="card text-muted">
+              <img class="card-img-top" src="{{language.image.url}}" alt="{{language.language_type}}" style="height:200px !important;">
+              <div class="card-body">
+                <a href="{%url 'SearchLanguage' language.id%}" class="btn btn-primary">View</a>
+              </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+  </div>
+</div>
+{%endblock content%}
